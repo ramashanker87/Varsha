@@ -65,38 +65,5 @@ public class Employee {
                 ", Salary=" + Salary +
                 '}';
     }
-    /* public Private getString() {
-        return String;
-    }
-
-    public int getSalary() {
-        return Salary;
-    }
-
-    public int getAge() {
-        return Age;
-    }
-
-    public void setString(Private string) {
-        String = string;
-    }
-
-    public void setSalary(int salary) {
-        Salary = salary;
-    }
-
-    public void setAge(int age) {
-        Age = age;
-    }
-
-    @Override
-    public java.lang.String toString() {
-        return "Employee{" +
-                "String=" + String +
-                ", Age=" + Age +
-                ", String=" + String +
-                ", String=" + String +
-                ", Salary=" + Salary +
-                '}';*/
     }
 

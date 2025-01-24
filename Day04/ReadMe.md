@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=com.rama.app -DartifactId=JavaException-DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
