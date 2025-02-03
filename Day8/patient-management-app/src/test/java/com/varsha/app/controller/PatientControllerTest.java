@@ -39,7 +39,7 @@ public class PatientControllerTest {
         patientMap.put(patient2.getId(), patient2);
         patientMap.put(patient3.getId(), patient3);
         when(patientService.readAllPatient()).thenReturn(patientMap);
-        Map<String, Patient> employeeResultMap=patientController.getAllPatient();
+        Map<String, Patient> patientResultMap=patientController.getAllPatient();
         assert patientResultMap!=null;
         assert patientResultMap.size()==3;
         assert patientResultMap.get(patient1.getId())==patient1;
@@ -51,18 +51,20 @@ public class PatientControllerTest {
     public void testCreatePatient() {
         Patient patient1 = new Patient("p1","patient1",55,"hospital1","M");
         when(patientService.createPatient(patient1)).thenReturn(patient1);
-        Patient resultEmployee=patientController.createPatient(patient1);
+        Patient resultPatient=patientController.createPatient(patient1);
         assert resultPatient!=null;
+
+
         assert resultPatient.getId()==patient1.getId();
-        assert resultPatient.getName().equals("Emp1");
-        assert resultPatient.getAge()==25;
+        assert resultPatient.getName().equals("Patient1");
+        assert resultPatient.getAge()==55;
     }
     @Test
     public void testUpdatePatient() {
         Patient patient1 = new Patient("p1","patient1",55,"hospital1","M");
         Patient patient2 = new Patient("p2","patient2",43,"hospital2","M");
-        when(patientService.updatePatient(anyString(),anyInt())).thenReturn(patient2);
-        Patient resultPatient=patientController.updatePatient(patient1.getId(),26);
+        when(patientService.updatePatient(anyString(),anyString())).thenReturn(patient2);
+        Patient resultPatient=patientController.updatePatient(patient1.getId(),"hospital9");
         assert resultPatient!=null;
         assert resultPatient.getId()==patient2.getId();
         assert resultPatient.getName().equals("Patient2");

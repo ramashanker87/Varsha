@@ -29,11 +29,11 @@ public class PatientServiceTest {
     public void testUpdatePatient() {
         Patient patient1 = new Patient("p1","patient1",55,"hospital1","M");
         Patient expectedPatient=patientService.createPatient(patient1);
-        Patient resultPatient=patientService.updatePatient(patient1.getId(),30);
+        Patient resultPatient=patientService.updatePatient(patient1.getId(),"hospital9");
         assert resultPatient != null;
         assert resultPatient.getId()== patient1.getId();
         assert resultPatient.getName()== patient1.getName();
-        assert resultPatient.getAge()== 30;
+        assert resultPatient.getAge()== patient1.getAge();
         assert resultPatient.getGender() == patient1.getGender();
         assert resultPatient.getHospitalName() == "hospital9";
     }
@@ -49,7 +49,7 @@ public class PatientServiceTest {
     }
     @Test
     public void testReadPatientBYName() {
-        Patient patient1 = new Patient("p1","patient1",55,"hospital1","M";
+        Patient patient1 = new Patient("p1","patient1",55,"hospital1","M");
         Patient actualPatient=patientService.createPatient(patient1);
         Patient expectedResult=patientService.readPatientByName(patient1.getId());
         assert expectedResult != null;

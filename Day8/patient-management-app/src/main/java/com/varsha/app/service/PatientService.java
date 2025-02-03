@@ -50,29 +50,29 @@ import java.util.Map;
 
 @Service
 public class PatientService {
-    Map<String, Patient> patient = new HashMap<String, Patient>();
+    Map<String, Patient> patients = new HashMap<String, Patient>();
 
     public Patient createPatient(Patient patient) {
         patients.put(patient.getId(),patient);
         return patient;
     }
 
-    public Patient updatePatient(String id, int newhospitalName) {
-        Patient patient1= patient.get(id);
+    public Patient updatePatient(String id, String newhospitalName) {
+        Patient patient1= patients.get(id);
         patient1.setHospitalName(newhospitalName);
         return patient1;
     }
 
     public void deletePatient(String id) {
-        patient.remove(id);
+        patients.remove(id);
     }
 
-    public Patient readPatientById(String name) {
-        Patient result=patient.get(name);
+    public Patient readPatientByName(String name) {
+        Patient result=patients.get(name);
         return result;
     }
     public Map<String,Patient> readAllPatient() {
-        return patient;
+        return patients;
     }
 }
 

@@ -24,7 +24,7 @@ public class PatientController {
 
     @GetMapping("/get/all/patient")
     public Map<String, Patient> getAllPatient() {
-        return patientService.readAllPatients();
+        return patientService.readAllPatient();
     }
     @GetMapping("/get/patient")
     public void getAllPatientByName() {
@@ -36,8 +36,8 @@ public class PatientController {
     }
 
     @PutMapping("/update/patient")
-    public Patient updatePatient(@RequestParam("id") String id,@RequestParam("age") int age) {
-        return patientService.updatePatient(id,age);
+    public Patient updatePatient(@RequestParam("id") String id,@RequestParam("hospitalName") String hospitalName) {
+        return patientService.updatePatient(id,hospitalName);
     }
 
     @DeleteMapping("/delete/patient")

@@ -1,4 +1,4 @@
-# Application for Employee Information
+# Application for Patient Information
 
 ## Build application with maven
 
@@ -29,6 +29,8 @@ curl --location 'http://localhost:8080/employee/create/employee' \
      "id":"1",
      "name": "emp1",
      "age":25
+     "hospitalName":"hospital1"
+     "gender":"M"
 }'
 ```
 
