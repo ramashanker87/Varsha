@@ -1,13 +1,13 @@
-package com.student.app;
+package com.varsha.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringStudentProjectApplication {
+public class PatientManagementAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringStudentProjectApplication.class, args);
+		SpringApplication.run(PatientManagementAppApplication.class, args);
 	}
 
 }
