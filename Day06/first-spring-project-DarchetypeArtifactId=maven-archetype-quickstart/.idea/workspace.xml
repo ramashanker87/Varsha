@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e35a6cd5-05c8-47f2-9816-9b8d46d703e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Day05/simple-spring-boot/src/main/java/com/varsha/app/CalculateArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Day05/simple-spring-boot/src/main/java/com/varsha/app/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Day04/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day04/ReadMe.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/test/java/com/varsha/app/controller/ControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/test/java/com/varsha/app/service/ServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/ReadMe.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/model/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/model/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/com/varsha/app/service/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/java/configuration/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day8/patient-management-app/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/test/java/com/varsha/app/controller/PatientControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day8/patient-management-app/src/test/java/com/varsha/app/service/PatientServiceTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +33,12 @@
     &quot;assignee&quot;: &quot;ramashanker87&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ramashanker87/Varsha.git&quot;,
-    &quot;accountId&quot;: &quot;0d3d1c27-3ac5-400b-bbc8-f4306b529809&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ramashanker87/Varsha.git",
+    "accountId": "a3a6fbdd-b67f-42e2-83d3-e8df65a64332"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -37,21 +47,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/IdeaProjects/Varsha/Day06/first-spring-project-DarchetypeArtifactId=maven-archetype-quickstart&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/admin/IdeaProjects/Varsha/Day05/simple-spring-boot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\admin\IdeaProjects\Varsha\Day06\first-spring-project-DarchetypeArtifactId=maven-archetype-quickstart\src" />
@@ -74,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1738039081865</updated>
       <workItem from="1738039083125" duration="1006000" />
+      <workItem from="1738747543267" duration="62000" />
     </task>
     <servers />
   </component>
