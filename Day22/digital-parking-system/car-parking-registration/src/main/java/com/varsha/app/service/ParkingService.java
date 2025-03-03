@@ -1,66 +1,76 @@
 package com.varsha.app.service;
 
-import com.varsha.app.model.Car;
-import com.varsha.app.model.ParkingEnd;
-import com.varsha.app.model.ParkingStart;
-import io.awspring.cloud.sqs.operations.SqsTemplate;
+import com.varsha.app.module.Car;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
-
 public class ParkingService {
-    private static final Logger logger = LoggerFactory.getLogger(ParkingService.class);
-    private final AmqpTemplate amqpTemplate;
+
+    public static final Logger logger = LoggerFactory.getLogger(ParkingService.class);
+
     @Value("${rabbitmq.exchange.name}")
-    String exchangeName;
-    @Value("${rabbitmq.parkingStart.routingkey.name}")
-    String parkingStartRoutingKeyName;
-    @Value("${rabbitmq.parkingStart.queue.name}")
-    String parkingStartqueuename;
-    @Value("parkingEnd.routingkey")
-    String parkingEndRoutingKeyName;
-    @Value("parking-end-request.out")
-    String parkingEndRequestOut;
-    private ParkingStart parkingStart;
-    //private ParkingEnd parkingEnd;
-    public ParkingService(AmqpTemplate amqpTemplate, ParkingStart parkingStart) {
-        this.amqpTemplate = amqpTemplate;
-        this.parkingStart = parkingStart;
+    private String exchangeName;
+
+    @Value("${rabbitmq.start.request.routingkey.name}")
+    private String startRequestRoutingKeyName;
+
+    @Value("${rabbitmq.end.request.routingkey.name}")
+    private String endRequestRoutingKeyName;
+
+    private final AmqpTemplate producerAmqpTemplate;
+    // Constructor injection
+    public ParkingService(AmqpTemplate producerAmqpTemplate) {
+        this.producerAmqpTemplate = producerAmqpTemplate;
 
     }
-    public ParkingStart startParking(
-            Car car, String parkingNo) {
-        parkingStart.setParkingNo(parkingNo);
-        parkingStart.setStartTime(new Date());
-        parkingStart.setStatus("start");
-        parkingStart.setRegNo(car.getRegNo());
 
-        logger.info("ParkingStart: {}", parkingStart.toString());
-        amqpTemplate.convertAndSend(exchangeName, parkingStartRoutingKeyName,parkingStart);
-        return parkingStart;
+    @Bean
+    public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
-    public ParkingEnd endParking(String regNo) {
+    public String parkingStartService(Car car, String parkingNumber) {
+        logger.info("Acquiring parking number " + parkingNumber);
 
-        ParkingEnd parkingEnd = new ParkingEnd();
-        parkingEnd.setParkingNo(parkingStart.getParkingNo());
-        parkingEnd.setStartTime(parkingStart.getStartTime());
-        parkingEnd.setStatus("End");
-        parkingEnd.setRegNo(regNo);
-        parkingEnd.setEndTime(new Date());
-        long timedifference =( parkingEnd.getEndTime().getTime() - parkingEnd.getStartTime().getTime());
-        long mints =timedifference/(1000*60);
-        parkingEnd.setPrice((int)(mints*2));
-        logger.info(parkingEnd.toString());
-        amqpTemplate.convertAndSend(exchangeName, parkingEndRoutingKeyName,parkingEnd);
-        return parkingEnd;
+        // Create a Map message
+        Map<String, Object> message = new HashMap<>();
+        message.put("car", car);
+        message.put("parkingNumber", parkingNumber);
+
+        // Send message to RabbitMQ queue
+        producerAmqpTemplate.convertAndSend(exchangeName, startRequestRoutingKeyName, message);
+
+        return "Parking is starting...";
     }
+
+
+    public String parkingEndService( String parkingNumber){
+        logger.info("releasing parking number " + parkingNumber);
+        producerAmqpTemplate.convertAndSend(exchangeName, endRequestRoutingKeyName, parkingNumber);
+        return "Parking is ending...";
+    }
+
+    // Listen to parking-start-response Queue
+    @RabbitListener(queues = "${rabbitmq.start.response.queue.name}")
+    public void receiveStartResponse(String message) {
+        logger.info("Received start response: " + message);
+    }
+
+    // Listen to parking-end-response Queue
+    @RabbitListener(queues = "${rabbitmq.end.response.queue.name}")
+    public void receiveEndResponse(String message) {
+        logger.info("Received end response: " + message);
+    }
+
 
 }

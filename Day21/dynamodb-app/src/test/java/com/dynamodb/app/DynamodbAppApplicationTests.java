@@ -1,10 +1,10 @@
-package com.varsha.app;
+package com.dynamodb.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DigitalParkingSystemApplicationTests {
+class DynamodbAppApplicationTests {
 
 	@Test
 	void contextLoads() {
